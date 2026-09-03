@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernweh — Field Notes on Slow Travel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Space+Grotesk:wght@400;500&display=swap');
+
+  :root{
+    --paper: #EDE7DD;
+    --ink: #24322B;
+    --moss: #4B5D4A;
+    --clay: #B5502A;
+    --line: rgba(36,50,43,0.16);
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.5;
+  }
+
+  a{color:inherit;}
+
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 6vw;
+    border-bottom:1px solid var(--line);
+  }
+
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    font-weight:600;
+  }
+
+  nav a{
+    text-decoration:none;
+    margin-left:32px;
+    font-size:0.95rem;
+  }
+
+  .hero{
+    padding:10vh 6vw 8vh;
+    max-width:900px;
+  }
+
+  .hero p.kicker{
+    color:var(--moss);
+    margin:0 0 12px;
+    font-size:1rem;
+  }
+
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.05;
+    margin:0 0 28px;
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--clay);
+  }
+
+  .hero p.sub{
+    max-width:560px;
+    font-size:1.15rem;
+    color:#3c473f;
+  }
+
+  .cta{
+    display:inline-block;
+    margin-top:36px;
+    padding:14px 26px;
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    border-radius:2px;
+    font-size:0.95rem;
+  }
+
+  section.notes{
+    padding:6vh 6vw;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+  }
+
+  .note h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.3rem;
+    margin:0 0 10px;
+  }
+
+  .note p{
+    color:#3c473f;
+    font-size:0.98rem;
+    margin:0;
+  }
+
+  .note span{
+    display:block;
+    color:var(--clay);
+    font-size:0.85rem;
+    margin-bottom:8px;
+  }
+
+  footer{
+    padding:5vh 6vw;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    color:#5b665e;
+    font-size:0.9rem;
+  }
+
+  @media (max-width: 720px){
+    section.notes{grid-template-columns:1fr;}
+    header{flex-direction:column;align-items:flex-start;gap:14px;}
+    nav a{margin-left:0;margin-right:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Fernweh</div>
+  <nav>
+    <a href="#notes">Notes</a>
+    <a href="#about">About</a>
+    <a href="#subscribe">Subscribe</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="kicker">A journal of slow travel</p>
+  <h1>Go nowhere fast.<br>Stay <em>everywhere</em> long.</h1>
+  <p class="sub">Dispatches from small towns, long train rides, and the kind of afternoons that don't make it into guidebooks. Updated whenever there's something worth saying.</p>
+  <a class="cta" href="#subscribe">Get the next dispatch</a>
+</section>
+
+<section class="notes" id="notes">
+  <div class="note">
+    <span>Lisbon, March</span>
+    <h3>The tram that goes nowhere in particular</h3>
+    <p>On riding the 28 twice in one afternoon, once for the view and once for the company.</p>
+  </div>
+  <div class="note">
+    <span>Oaxaca, June</span>
+    <h3>Learning a market by its smells</h3>
+    <p>Mezcal, marigold, and the particular sweetness of pan de yema at six in the morning.</p>
+  </div>
+  <div class="note">
+    <span>Ghent, October</span>
+    <h3>A city best seen from a bicycle</h3>
+    <p>Notes on cobblestones, canal fog, and why the slowest way through a place is often the best.</p>
+  </div>
+</section>
+
+<footer id="subscribe">
+  <span>© 2026 Fernweh Journal</span>
+  <span>hello@fernwehjournal.com</span>
+</footer>
+
+</body>
+</html>
