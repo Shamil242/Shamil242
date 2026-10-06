@@ -15,127 +15,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Space+Grotesk:wght@400;500&display=swap');
 
   :root{
-    --paper: #EDE7DD;
-    --ink: #24322B;
-    --moss: #4B5D4A;
-    --clay: #B5502A;
-    --line: rgba(36,50,43,0.16);
+    --paper:#EDE7DD; --ink:#24322B; --moss:#4B5D4A; --clay:#B5502A;
+    --line:rgba(36,50,43,0.16); --soft:#3c473f;
   }
-
   *{box-sizing:border-box;}
-
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Space Grotesk', sans-serif;
-    line-height:1.5;
-  }
-
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Space Grotesk',sans-serif;line-height:1.5;}
   a{color:inherit;}
+  :focus-visible{outline:2px solid var(--clay);outline-offset:3px;}
 
-  header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:28px 6vw;
-    border-bottom:1px solid var(--line);
+  header{display:flex;justify-content:space-between;align-items:center;padding:28px 6vw;border-bottom:1px solid var(--line);}
+  .logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;}
+  nav a{text-decoration:none;margin-left:32px;font-size:0.95rem;}
+
+  /* Hero with photo */
+  .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5vw;align-items:center;padding:8vh 6vw;}
+  .hero p.kicker{color:var(--moss);margin:0 0 12px;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.6rem,5.5vw,4.4rem);line-height:1.05;margin:0 0 28px;}
+  .hero h1 em{font-style:italic;color:var(--clay);}
+  .hero p.sub{max-width:520px;font-size:1.15rem;color:var(--soft);}
+  .cta{display:inline-block;margin-top:32px;padding:14px 26px;background:var(--ink);color:var(--paper);text-decoration:none;border-radius:2px;font-size:0.95rem;border:0;cursor:pointer;font-family:inherit;}
+  .cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px;}
+
+  /* Photo slots: tinted background shows if a file is missing */
+  figure{margin:0;}
+  .ph{position:relative;overflow:hidden;background:var(--moss);border-radius:2px;}
+  .ph img{display:block;width:100%;height:100%;object-fit:cover;}
+  .ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 14px 10px;font-size:0.8rem;color:#fff;background:linear-gradient(transparent,rgba(20,28,23,.65));}
+  .hero .ph{aspect-ratio:4/5;}
+
+  /* Browse controls */
+  .browse{padding:6vh 6vw 0;border-top:1px solid var(--line);}
+  .browse h2,.gallery h2,.signup h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.8rem,3.5vw,2.6rem);margin:0 0 20px;}
+  .controls{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between;margin-bottom:28px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font:inherit;font-size:0.9rem;padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer;}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .tools{display:flex;gap:10px;}
+  .tools input,.tools select,.signup input,.signup select{font:inherit;font-size:0.95rem;padding:10px 12px;border:1px solid var(--line);background:#f6f2ea;color:var(--ink);border-radius:2px;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding-bottom:7vh;}
+  .note .ph{aspect-ratio:3/2;margin-bottom:14px;}
+  .note h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin:0 0 8px;}
+  .note p{color:var(--soft);font-size:0.98rem;margin:0 0 10px;}
+  .note .meta{display:block;color:var(--clay);font-size:0.85rem;margin-bottom:6px;}
+  .note .read{font-size:0.9rem;color:var(--moss);}
+  .note[hidden]{display:none;}
+  .empty{display:none;padding:0 0 7vh;color:var(--soft);}
+
+  /* Gallery strip */
+  .gallery{padding:6vh 6vw;border-top:1px solid var(--line);}
+  .strip{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:200px;gap:14px;}
+  .strip .ph:first-child{grid-row:span 2;}
+
+  /* Signup */
+  .signup{padding:7vh 6vw;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:5vw;}
+  .signup p{color:var(--soft);max-width:440px;margin:0;}
+  .signup form{display:grid;gap:12px;}
+  .signup label{font-size:0.85rem;color:var(--moss);display:grid;gap:6px;}
+  .signup .ok{display:none;color:var(--moss);}
+
+  footer{padding:5vh 6vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#5b665e;font-size:0.9rem;}
+
+  @media (max-width:900px){
+    .hero,.signup{grid-template-columns:1fr;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .strip{grid-template-columns:1fr 1fr;grid-auto-rows:160px;}
+    .strip .ph:first-child{grid-column:span 2;grid-row:span 1;}
   }
-
-  .logo{
-    font-family:'Fraunces', serif;
-    font-size:1.3rem;
-    font-weight:600;
-  }
-
-  nav a{
-    text-decoration:none;
-    margin-left:32px;
-    font-size:0.95rem;
-  }
-
-  .hero{
-    padding:10vh 6vw 8vh;
-    max-width:900px;
-  }
-
-  .hero p.kicker{
-    color:var(--moss);
-    margin:0 0 12px;
-    font-size:1rem;
-  }
-
-  .hero h1{
-    font-family:'Fraunces', serif;
-    font-weight:400;
-    font-size:clamp(2.6rem, 6vw, 4.6rem);
-    line-height:1.05;
-    margin:0 0 28px;
-  }
-
-  .hero h1 em{
-    font-style:italic;
-    color:var(--clay);
-  }
-
-  .hero p.sub{
-    max-width:560px;
-    font-size:1.15rem;
-    color:#3c473f;
-  }
-
-  .cta{
-    display:inline-block;
-    margin-top:36px;
-    padding:14px 26px;
-    background:var(--ink);
-    color:var(--paper);
-    text-decoration:none;
-    border-radius:2px;
-    font-size:0.95rem;
-  }
-
-  section.notes{
-    padding:6vh 6vw;
-    border-top:1px solid var(--line);
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px;
-  }
-
-  .note h3{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.3rem;
-    margin:0 0 10px;
-  }
-
-  .note p{
-    color:#3c473f;
-    font-size:0.98rem;
-    margin:0;
-  }
-
-  .note span{
-    display:block;
-    color:var(--clay);
-    font-size:0.85rem;
-    margin-bottom:8px;
-  }
-
-  footer{
-    padding:5vh 6vw;
-    border-top:1px solid var(--line);
-    display:flex;
-    justify-content:space-between;
-    color:#5b665e;
-    font-size:0.9rem;
-  }
-
-  @media (max-width: 720px){
-    section.notes{grid-template-columns:1fr;}
+  @media (max-width:620px){
+    .grid{grid-template-columns:1fr;}
     header{flex-direction:column;align-items:flex-start;gap:14px;}
     nav a{margin-left:0;margin-right:24px;}
+    .tools{width:100%;} .tools input{flex:1;}
   }
 </style>
 </head>
@@ -148,40 +100,176 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="logo">Fernweh</div>
   <nav>
     <a href="#notes">Notes</a>
-    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
     <a href="#subscribe">Subscribe</a>
   </nav>
 </header>
 
 <section class="hero">
-  <p class="kicker">A journal of slow travel</p>
-  <h1>Go nowhere fast.<br>Stay <em>everywhere</em> long.</h1>
-  <p class="sub">Dispatches from small towns, long train rides, and the kind of afternoons that don't make it into guidebooks. Updated whenever there's something worth saying.</p>
-  <a class="cta" href="#subscribe">Get the next dispatch</a>
+  <div>
+    <p class="kicker">A journal of slow travel</p>
+    <h1>Go nowhere fast.<br>Stay <em>everywhere</em> long.</h1>
+    <p class="sub">Dispatches from small towns, long train rides, and the kind of afternoons that don't make it into guidebooks. Updated whenever there's something worth saying.</p>
+    <a class="cta" href="#subscribe">Get the next dispatch</a><a class="cta ghost" href="#notes">Read the notes</a>
+  </div>
+  <figure class="ph">
+    <img src="images/hero-lisbon-tram.jpg" alt="A yellow tram climbing a narrow cobbled street in Lisbon" width="800" height="1000">
+    <figcaption>Lisbon, March</figcaption>
+  </figure>
 </section>
 
-<section class="notes" id="notes">
-  <div class="note">
-    <span>Lisbon, March</span>
-    <h3>The tram that goes nowhere in particular</h3>
-    <p>On riding the 28 twice in one afternoon, once for the view and once for the company.</p>
+<section class="browse" id="notes">
+  <h2>Field notes</h2>
+  <div class="controls">
+    <div class="chips" role="group" aria-label="Filter by theme">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="city" aria-pressed="false">Cities</button>
+      <button class="chip" data-filter="food" aria-pressed="false">Markets &amp; food</button>
+      <button class="chip" data-filter="rail" aria-pressed="false">Train rides</button>
+      <button class="chip" data-filter="bike" aria-pressed="false">By bicycle</button>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search notes" aria-label="Search notes">
+      <select id="sort" aria-label="Sort notes">
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+        <option value="short">Shortest read</option>
+      </select>
+    </div>
   </div>
-  <div class="note">
-    <span>Oaxaca, June</span>
-    <h3>Learning a market by its smells</h3>
-    <p>Mezcal, marigold, and the particular sweetness of pan de yema at six in the morning.</p>
+
+  <div class="grid" id="grid">
+    <article class="note" data-cat="city" data-date="2026-03-14" data-min="6">
+      <figure class="ph"><img loading="lazy" src="images/lisbon-tram-28.jpg" alt="Tram 28 passing a tiled façade in Alfama, Lisbon" width="600" height="400"></figure>
+      <span class="meta">Lisbon, March · 6 min read</span>
+      <h3>The tram that goes nowhere in particular</h3>
+      <p>On riding the 28 twice in one afternoon, once for the view and once for the company.</p>
+      <a class="read" href="#">Read the note</a>
+    </article>
+    <article class="note" data-cat="food" data-date="2026-06-02" data-min="8">
+      <figure class="ph"><img loading="lazy" src="images/oaxaca-market.jpg" alt="Stacked pan de yema and marigolds at an Oaxaca market stall" width="600" height="400"></figure>
+      <span class="meta">Oaxaca, June · 8 min read</span>
+      <h3>Learning a market by its smells</h3>
+      <p>Mezcal, marigold, and the particular sweetness of pan de yema at six in the morning.</p>
+      <a class="read" href="#">Read the note</a>
+    </article>
+    <article class="note" data-cat="bike" data-date="2025-10-21" data-min="5">
+      <figure class="ph"><img loading="lazy" src="images/ghent-bicycle.jpg" alt="A bicycle leaning on a railing beside a misty canal in Ghent" width="600" height="400"></figure>
+      <span class="meta">Ghent, October · 5 min read</span>
+      <h3>A city best seen from a bicycle</h3>
+      <p>Notes on cobblestones, canal fog, and why the slowest way through a place is often the best.</p>
+      <a class="read" href="#">Read the note</a>
+    </article>
+    <article class="note" data-cat="rail" data-date="2026-04-09" data-min="9">
+      <figure class="ph"><img loading="lazy" src="images/night-train-window.jpg" alt="View of hills at dusk from a train window" width="600" height="400"></figure>
+      <span class="meta">Vienna to Trieste, April · 9 min read</span>
+      <h3>Six hours, one window seat</h3>
+      <p>A slow regional line, a paper map, and a conductor who knew every station by its bakery.</p>
+      <a class="read" href="#">Read the note</a>
+    </article>
+    <article class="note" data-cat="food" data-date="2026-01-18" data-min="4">
+      <figure class="ph"><img loading="lazy" src="images/kochi-fish-market.jpg" alt="Fishermen sorting the morning catch near Chinese fishing nets in Kochi" width="600" height="400"></figure>
+      <span class="meta">Kochi, January · 4 min read</span>
+      <h3>Breakfast by the fishing nets</h3>
+      <p>Appam, fish curry, and a morning spent watching the nets lowered by hand.</p>
+      <a class="read" href="#">Read the note</a>
+    </article>
+    <article class="note" data-cat="city" data-date="2025-09-05" data-min="7">
+      <figure class="ph"><img loading="lazy" src="images/porto-rooftops.jpg" alt="Terracotta rooftops of Porto above the Douro river" width="600" height="400"></figure>
+      <span class="meta">Porto, September · 7 min read</span>
+      <h3>Rooftops, rain, and a second coffee</h3>
+      <p>What a wet week taught me about staying put in a city built on hills.</p>
+      <a class="read" href="#">Read the note</a>
+    </article>
   </div>
-  <div class="note">
-    <span>Ghent, October</span>
-    <h3>A city best seen from a bicycle</h3>
-    <p>Notes on cobblestones, canal fog, and why the slowest way through a place is often the best.</p>
+  <p class="empty" id="empty">No notes match that search. Try a different word or clear the filter.</p>
+</section>
+
+<section class="gallery" id="gallery">
+  <h2>From the road</h2>
+  <div class="strip">
+    <figure class="ph"><img loading="lazy" src="images/gallery-1.jpg" alt="Morning light over a quiet village square" width="900" height="420"><figcaption>Morning, village square</figcaption></figure>
+    <figure class="ph"><img loading="lazy" src="images/gallery-2.jpg" alt="Hands holding a cup of coffee at a station platform" width="400" height="200"></figure>
+    <figure class="ph"><img loading="lazy" src="images/gallery-3.jpg" alt="Laundry hanging between two old houses" width="400" height="200"></figure>
+    <figure class="ph"><img loading="lazy" src="images/gallery-4.jpg" alt="A lone cyclist on a coastal road" width="400" height="200"></figure>
+    <figure class="ph"><img loading="lazy" src="images/gallery-5.jpg" alt="A table set for lunch under a fig tree" width="400" height="200"></figure>
   </div>
 </section>
 
-<footer id="subscribe">
+<section class="signup" id="subscribe">
+  <div>
+    <h2>Get the next dispatch</h2>
+    <p>One letter whenever there's something worth saying. No schedule, no spam, unsubscribe any time.</p>
+  </div>
+  <form id="form" novalidate>
+    <label>Email
+      <input type="email" id="email" placeholder="you@example.com" required>
+    </label>
+    <label>What do you want to read about?
+      <select id="interest">
+        <option>A bit of everything</option>
+        <option>Cities</option>
+        <option>Markets &amp; food</option>
+        <option>Train rides</option>
+        <option>By bicycle</option>
+      </select>
+    </label>
+    <button class="cta" type="submit" style="margin-top:4px">Subscribe</button>
+    <p class="ok" id="ok" role="status">You're on the list. Check your inbox to confirm.</p>
+  </form>
+</section>
+
+<footer>
   <span>© 2026 Fernweh Journal</span>
   <span>hello@fernwehjournal.com</span>
 </footer>
 
+<script>
+(function(){
+  var grid=document.getElementById('grid'),
+      notes=[].slice.call(grid.children),
+      chips=document.querySelectorAll('.chip'),
+      q=document.getElementById('q'),
+      sort=document.getElementById('sort'),
+      empty=document.getElementById('empty'),
+      cat='all';
+
+  function apply(){
+    var term=q.value.trim().toLowerCase(), shown=0;
+    notes.forEach(function(n){
+      var ok=(cat==='all'||n.dataset.cat===cat)&&(!term||n.textContent.toLowerCase().indexOf(term)>-1);
+      n.hidden=!ok; if(ok) shown++;
+    });
+    empty.style.display=shown?'none':'block';
+  }
+  function order(){
+    var v=sort.value;
+    notes.sort(function(a,b){
+      if(v==='short') return a.dataset.min-b.dataset.min;
+      var d=a.dataset.date<b.dataset.date?-1:1;
+      return v==='newest'?-d:d;
+    }).forEach(function(n){grid.appendChild(n);});
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      cat=c.dataset.filter;
+      chips.forEach(function(x){x.setAttribute('aria-pressed',x===c);});
+      apply();
+    });
+  });
+  q.addEventListener('input',apply);
+  sort.addEventListener('change',order);
+  order();
+
+  document.getElementById('form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=document.getElementById('email');
+    if(!em.value||em.value.indexOf('@')<1){em.focus();em.style.borderColor='#B5502A';return;}
+    em.style.borderColor='';
+    document.getElementById('ok').style.display='block';
+    // Connect this to your email provider (Mailchimp, Buttondown, etc.)
+  });
+})();
+</script>
 </body>
 </html>
